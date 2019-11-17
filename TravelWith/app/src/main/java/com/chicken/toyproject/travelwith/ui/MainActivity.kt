@@ -1,4 +1,4 @@
-package com.chicken.toyproject.travelwith
+package com.chicken.toyproject.travelwith.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,8 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.chicken.toyproject.travelwith.R
+import com.chicken.toyproject.travelwith.ui.fragment.*
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
@@ -64,11 +66,26 @@ class MainActivity : AppCompatActivity() {
         tran = fm.beginTransaction()
 
         when(n){
-            0-> tran.replace(R.id.main_fragment,HomeFragment()).commit()
-            1-> tran.replace(R.id.main_fragment, MyScheduleFragment()).commit()
-            2-> tran.replace(R.id.main_fragment,TravelFragment()).commit()
-            3-> tran.replace(R.id.main_fragment,ChatFragment()).commit()
-            4-> tran.replace(R.id.main_fragment,AdvFragment()).commit()
+            0-> tran.replace(
+                R.id.main_fragment,
+                HomeFragment()
+            ).commit()
+            1-> tran.replace(
+                R.id.main_fragment,
+                MyScheduleFragment()
+            ).commit()
+            2-> tran.replace(
+                R.id.main_fragment,
+                TravelFragment()
+            ).commit()
+            3-> tran.replace(
+                R.id.main_fragment,
+                ChatFragment()
+            ).commit()
+            4-> tran.replace(
+                R.id.main_fragment,
+                AdvFragment()
+            ).commit()
         }
 
     }
