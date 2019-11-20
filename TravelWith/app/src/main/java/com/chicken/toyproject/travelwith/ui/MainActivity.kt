@@ -3,29 +3,21 @@ package com.chicken.toyproject.travelwith.ui
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.chicken.toyproject.travelwith.R
 import com.chicken.toyproject.travelwith.ui.fragment.*
+import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
 
+    //TODO : need to use enum?
     private val FRAGMENT_HOME = 0
     private val FRAGMENT_MY_SCHEDULE = 1
     private val FRAGMENT_COMPANION = 2
     private val FRAGMENT_CHAT = 3
     private val FRAGMENT_AD = 4
-
-    private lateinit var homeTabBtn: Button
-    private lateinit var myScheduleTabBtn: Button
-    private lateinit var companionTabBtn: Button
-    private lateinit var chatTabBtn: Button
-    private lateinit var adTabBtn: Button
-    private lateinit var frag1: Fragment
-    private lateinit var frag2: Fragment
-    private lateinit var frag3: Fragment
 
     //TODO : need to rename
     private lateinit var fm: FragmentManager
@@ -35,38 +27,27 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        homeTabBtn = findViewById(R.id.btn_home)
-        myScheduleTabBtn = findViewById(R.id.btn_my_schedule)
-        companionTabBtn = findViewById(R.id.btn_companion)
-        chatTabBtn = findViewById(R.id.btn_chat)
-        adTabBtn = findViewById(R.id.btn_ad)
-
-        //TODO : need to rename
-        frag1 = Fragment()
-        frag2 = Fragment()
-        frag3 = Fragment()
-
-        homeTabBtn.setOnClickListener {
+        // developerkim : kotlin android extension
+        btn_home.setOnClickListener {
             toast("setFrag Home")
             setFrag(FRAGMENT_HOME)
         }
-        myScheduleTabBtn.setOnClickListener {
+        btn_my_schedule.setOnClickListener {
             toast("setFrag My schedule")
             setFrag(FRAGMENT_MY_SCHEDULE)
         }
-        companionTabBtn.setOnClickListener {
+        btn_companion.setOnClickListener {
             toast("setFrag Companion")
             setFrag(FRAGMENT_COMPANION)
         }
-        chatTabBtn.setOnClickListener {
+        btn_chat.setOnClickListener {
             toast("setFrag Chat")
             setFrag(FRAGMENT_CHAT)
         }
-        adTabBtn.setOnClickListener {
+        btn_ad.setOnClickListener {
             toast("setFrag AD")
             setFrag(FRAGMENT_AD)
         }
-
     }
 
 
@@ -75,26 +56,27 @@ class MainActivity : AppCompatActivity() {
         tran = fm.beginTransaction()
 
         when (fragType) {
+            // TODO : 시작 화면 home fragment 로 ...
             FRAGMENT_HOME -> tran.replace(
                 R.id.main_fragment,
                 HomeFragment()
-            ).commit()
+            ).addToBackStack(null).commit()
             FRAGMENT_MY_SCHEDULE -> tran.replace(
                 R.id.main_fragment,
                 MyScheduleFragment()
-            ).commit()
+            ).addToBackStack(null).commit()
             FRAGMENT_COMPANION -> tran.replace(
                 R.id.main_fragment,
                 TravelFragment()
-            ).commit()
+            ).addToBackStack(null).commit()
             FRAGMENT_CHAT -> tran.replace(
                 R.id.main_fragment,
                 ChatFragment()
-            ).commit()
+            ).addToBackStack(null).commit()
             FRAGMENT_AD -> tran.replace(
                 R.id.main_fragment,
                 AdvFragment()
-            ).commit()
+            ).addToBackStack(null).commit()
         }
 
     }
