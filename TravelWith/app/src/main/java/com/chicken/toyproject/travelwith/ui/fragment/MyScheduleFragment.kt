@@ -2,10 +2,10 @@ package com.chicken.toyproject.travelwith.ui.fragment
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chicken.toyproject.travelwith.R
 import com.chicken.toyproject.travelwith.ui.adapter.MyScheduleAdapter
@@ -51,7 +51,7 @@ class MyScheduleFragment : Fragment() {
 
         addTestArray()  // to be deleted
         rvMyList.layoutManager = LinearLayoutManager(activity)
-        rvMyList.adapter = MyScheduleAdapter (testArray, context)
+        rvMyList.adapter = MyScheduleAdapter(testArray, context)
 
 
     }
@@ -77,8 +77,7 @@ class MyScheduleFragment : Fragment() {
     }
 
 
-
-    private fun addTestArray () {
+    private fun addTestArray() {
         testArray.add("부산")
         testArray.add("제주도")
         testArray.add("광주")

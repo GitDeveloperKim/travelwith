@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chicken.toyproject.travelwith.R
 import kotlinx.android.synthetic.main.myschedule_list_item.view.*
 
-class MyScheduleAdapter (
-    val items : ArrayList<String>,
-    val context : Context?
-) : RecyclerView.Adapter <ViewHolder>() {
+class MyScheduleAdapter(
+    val items: ArrayList<String>,
+    val context: Context?
+) : RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -19,7 +19,8 @@ class MyScheduleAdapter (
                 R.layout.myschedule_list_item,
                 parent,
                 false
-            ))
+            )
+        )
     }
 
     override fun getItemCount(): Int {
@@ -31,6 +32,6 @@ class MyScheduleAdapter (
     }
 }
 
-class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
+class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val tvDataType = view.testText!!
 }
