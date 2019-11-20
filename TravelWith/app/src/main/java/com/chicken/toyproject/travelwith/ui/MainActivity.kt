@@ -11,78 +11,87 @@ import com.chicken.toyproject.travelwith.ui.fragment.*
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
-    lateinit var btn1: Button
-    lateinit var btn2: Button
-    lateinit var btn3: Button
-    lateinit var btn4: Button
-    lateinit var btn5: Button
-    lateinit var frag1: Fragment
-    lateinit var frag2: Fragment
-    lateinit var frag3: Fragment
 
-    lateinit var fm: FragmentManager
-    lateinit var tran: FragmentTransaction
+    private val FRAGMENT_HOME = 0
+    private val FRAGMENT_MY_SCHEDULE = 1
+    private val FRAGMENT_COMPANION = 2
+    private val FRAGMENT_CHAT = 3
+    private val FRAGMENT_AD = 4
+
+    private lateinit var homeTabBtn: Button
+    private lateinit var myScheduleTabBtn: Button
+    private lateinit var companionTabBtn: Button
+    private lateinit var chatTabBtn: Button
+    private lateinit var adTabBtn: Button
+    private lateinit var frag1: Fragment
+    private lateinit var frag2: Fragment
+    private lateinit var frag3: Fragment
+
+    //TODO : need to rename
+    private lateinit var fm: FragmentManager
+    private lateinit var tran: FragmentTransaction
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btn1 = findViewById(R.id.btn1)
-        btn2 = findViewById(R.id.btn2)
-        btn3 = findViewById(R.id.btn3)
-        btn4 = findViewById(R.id.btn4)
-        btn5 = findViewById(R.id.btn5)
+        homeTabBtn = findViewById(R.id.btn_home)
+        myScheduleTabBtn = findViewById(R.id.btn_my_schedule)
+        companionTabBtn = findViewById(R.id.btn_companion)
+        chatTabBtn = findViewById(R.id.btn_chat)
+        adTabBtn = findViewById(R.id.btn_ad)
 
+        //TODO : need to rename
         frag1 = Fragment()
         frag2 = Fragment()
         frag3 = Fragment()
 
-        btn1.setOnClickListener {
-            toast("setFrag0")
-            setFrag(0)
+        homeTabBtn.setOnClickListener {
+            toast("setFrag Home")
+            setFrag(FRAGMENT_HOME)
         }
-        btn2.setOnClickListener {
-            toast("setFrag1")
-            setFrag(1)
+        myScheduleTabBtn.setOnClickListener {
+            toast("setFrag My schedule")
+            setFrag(FRAGMENT_MY_SCHEDULE)
         }
-        btn3.setOnClickListener {
-            toast("setFrag2")
-            setFrag(2)
+        companionTabBtn.setOnClickListener {
+            toast("setFrag Companion")
+            setFrag(FRAGMENT_COMPANION)
         }
-        btn4.setOnClickListener {
-            toast("setFrag3")
-            setFrag(3)
+        chatTabBtn.setOnClickListener {
+            toast("setFrag Chat")
+            setFrag(FRAGMENT_CHAT)
         }
-        btn5.setOnClickListener {
-            toast("setFrag4")
-            setFrag(4)
+        adTabBtn.setOnClickListener {
+            toast("setFrag AD")
+            setFrag(FRAGMENT_AD)
         }
 
     }
 
 
-    fun setFrag(n: Int) {
+    private fun setFrag(fragType: Int) {
         fm = supportFragmentManager
         tran = fm.beginTransaction()
 
-        when (n) {
-            0 -> tran.replace(
+        when (fragType) {
+            FRAGMENT_HOME -> tran.replace(
                 R.id.main_fragment,
                 HomeFragment()
             ).commit()
-            1 -> tran.replace(
+            FRAGMENT_MY_SCHEDULE -> tran.replace(
                 R.id.main_fragment,
                 MyScheduleFragment()
             ).commit()
-            2 -> tran.replace(
+            FRAGMENT_COMPANION -> tran.replace(
                 R.id.main_fragment,
                 TravelFragment()
             ).commit()
-            3 -> tran.replace(
+            FRAGMENT_CHAT -> tran.replace(
                 R.id.main_fragment,
                 ChatFragment()
             ).commit()
-            4 -> tran.replace(
+            FRAGMENT_AD -> tran.replace(
                 R.id.main_fragment,
                 AdvFragment()
             ).commit()
