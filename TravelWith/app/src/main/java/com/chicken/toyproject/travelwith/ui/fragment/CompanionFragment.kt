@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.chicken.toyproject.travelwith.R
+import com.chicken.toyproject.travelwith.ui.adapter.CompanionAdapter
+import kotlinx.android.synthetic.main.fragment_companion.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -25,6 +28,8 @@ class TravelFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    var testArray: ArrayList<String> = ArrayList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -38,9 +43,16 @@ class TravelFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_travel, container, false)
+        return inflater.inflate(R.layout.fragment_companion, container, false)
     }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
+        addTestArray()  // to be deleted
+
+        rvCompanionList.layoutManager = LinearLayoutManager(activity)
+        rvCompanionList.adapter = CompanionAdapter(testArray, context)
+    }
 
     companion object {
         /**
@@ -60,5 +72,22 @@ class TravelFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    private fun addTestArray() {
+        testArray.add("부산")
+        testArray.add("제주도")
+        testArray.add("광주")
+        testArray.add("강릉")
+        testArray.add("경주")
+        testArray.add("정동진")
+        testArray.add("서울")
+        testArray.add("수원")
+        testArray.add("목포")
+        testArray.add("진주")
+        testArray.add("전주")
+        testArray.add("포항")
+
+
     }
 }

@@ -34,4 +34,23 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
     implementation "org.jetbrains.anko:anko:$anko_version"
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+    // gson
+    implementation "com.google.code.gson:gson:2.8.5"
+
+    // Okhttp3
+    implementation "com.squareup.okhttp3:logging-interceptor:4.0.1"
+    implementation "com.squareup.okhttp3:okhttp:4.0.1"
+
+    // Retrofit2
+    implementation "com.squareup.retrofit2:converter-gson:2.6.1"
+    implementation "com.squareup.retrofit2:retrofit:2.6.1"
+
+    // glide
+    //implementation "com.github.bumptech.glide:glide:4.1.1"
+
+    // RxJava
+    //implementation "io.reactive.rxjava2:rxandroid:2.1.1"
+    //implementation "io.reactive.rxjava2.rxjava:2.2.11"
+    // implementation "io.reactive.rxjava2:rxkotlin:2.4.0"
 }

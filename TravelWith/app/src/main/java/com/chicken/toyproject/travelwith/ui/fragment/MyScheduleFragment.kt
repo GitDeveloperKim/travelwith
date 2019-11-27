@@ -28,7 +28,7 @@ class MyScheduleFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    val testArray: ArrayList<String> = ArrayList()
+    var testArray: ArrayList<String> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -6,17 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.chicken.toyproject.travelwith.R
-import kotlinx.android.synthetic.main.myschedule_list_item.view.*
+import kotlinx.android.synthetic.main.companion_list_item.view.*
 
-class MyScheduleAdapter(
+class CompanionAdapter(
     var items: ArrayList<String>,
     var context: Context?
-) : RecyclerView.Adapter<ViewHolder>() {
+) : RecyclerView.Adapter<ViewHolderCompanion>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderCompanion {
+        return ViewHolderCompanion(
             LayoutInflater.from(context).inflate(
-                R.layout.myschedule_list_item,
+                R.layout.companion_list_item,
                 parent,
                 false
             )
@@ -27,11 +27,11 @@ class MyScheduleAdapter(
         return items.size
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolderCompanion, position: Int) {
         holder.tvDataType.text = items[position]
     }
 }
 
-class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val tvDataType = view.testText!!
+class ViewHolderCompanion(view: View) : RecyclerView.ViewHolder(view) {
+    val tvDataType = view.companionText!!
 }
