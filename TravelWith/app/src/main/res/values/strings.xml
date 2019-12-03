@@ -9,4 +9,8 @@
     <string name="main_tab_btn_companion">상대</string>
     <string name="main_tab_btn_chat">채팅</string>
     <string name="main_tab_btn_ad">광고</string>
+
+    <string name="facebook_app_id">app_id</string>
+    <string name="fb_login_protocol_scheme">fb_app_id</string>
+
 </resources>

@@ -53,4 +53,9 @@ dependencies {
     //implementation "io.reactive.rxjava2:rxandroid:2.1.1"
     //implementation "io.reactive.rxjava2.rxjava:2.2.11"
     // implementation "io.reactive.rxjava2:rxkotlin:2.4.0"
+
+    //Google Login
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+    //facebook login
+    implementation 'com.facebook.android:facebook-login:[5,6)'
 }
