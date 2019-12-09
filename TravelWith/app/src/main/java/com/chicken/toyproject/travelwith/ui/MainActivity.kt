@@ -1,13 +1,19 @@
 package com.chicken.toyproject.travelwith.ui
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.chicken.toyproject.travelwith.R
+import com.chicken.toyproject.travelwith.core.network.RemoteGenerator
 import com.chicken.toyproject.travelwith.ui.fragment.*
+import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,6 +54,17 @@ class MainActivity : AppCompatActivity() {
             toast("setFrag AD")
             setFrag(FRAGMENT_AD)
         }
+
+        // developerkim : just test http request! to be deleted
+        RemoteGenerator?.getService()?.listTravels()?.enqueue(object : Callback<JsonObject> {
+            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                Toast.makeText(this@MainActivity,t.message , Toast.LENGTH_LONG ).show()  // this@MainActivity 명시해주어야한
+            }
+
+            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                Toast.makeText(this@MainActivity,response.body().toString(), Toast.LENGTH_SHORT ).show()  // this@MainActivity 명시해주어야한
+            }
+        })
     }
 
 
