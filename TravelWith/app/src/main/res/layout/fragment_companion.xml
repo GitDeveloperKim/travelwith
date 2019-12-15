@@ -6,7 +6,7 @@
              tools:context=".ui.fragment.TravelFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -25,6 +25,12 @@
                 android:id="@+id/rvCompanionList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-    </LinearLayout>
+    </LinearLayout>-->
+    <fragment
+            android:layout_width = "match_parent"
+            android:layout_height = "match_parent"
+            android:id = "@+id/map"
+            tools:context=".MainActivity"
+            android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
 </FrameLayout>

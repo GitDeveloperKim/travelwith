@@ -8,8 +8,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chicken.toyproject.travelwith.R
+import com.chicken.toyproject.travelwith.ui.MainActivity
 import com.chicken.toyproject.travelwith.ui.adapter.CompanionAdapter
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_companion.*
+import org.jetbrains.anko.support.v4.toast
+import org.jetbrains.anko.toast
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -23,12 +32,13 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  *
  */
-class TravelFragment : Fragment() {
+class TravelFragment : Fragment(),OnMapReadyCallback {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
     var testArray: ArrayList<String> = ArrayList()
+    lateinit var gMap: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,10 +58,13 @@ class TravelFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        addTestArray()  // to be deleted
+        /*addTestArray()  // to be deleted
 
         rvCompanionList.layoutManager = LinearLayoutManager(activity)
-        rvCompanionList.adapter = CompanionAdapter(testArray, context)
+        rvCompanionList.adapter = CompanionAdapter(testArray, context)*/
+        val mapFragment = activity?.supportFragmentManager
+            ?.findFragmentById(R.id.map) as? SupportMapFragment
+        mapFragment?.getMapAsync(CompanionFragment@this)
     }
 
     companion object {
@@ -72,6 +85,15 @@ class TravelFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        // issue : 불려야하는데 호출이 안됨
+        toast("ready to use Google map")    // developerkim : to be deleted
+        gMap = googleMap
+        val sydney = LatLng(-34.0, 151.0)
+        gMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        gMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
 
     private fun addTestArray() {
