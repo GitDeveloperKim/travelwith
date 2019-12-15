@@ -59,12 +59,11 @@ class TravelFragment : Fragment(),OnMapReadyCallback {
         super.onActivityCreated(savedInstanceState)
 
         /*addTestArray()  // to be deleted
-
         rvCompanionList.layoutManager = LinearLayoutManager(activity)
         rvCompanionList.adapter = CompanionAdapter(testArray, context)*/
-        val mapFragment = activity?.supportFragmentManager
-            ?.findFragmentById(R.id.map) as? SupportMapFragment
-        mapFragment?.getMapAsync(CompanionFragment@this)
+        mapView.onCreate(savedInstanceState)
+        mapView.onResume()
+        mapView.getMapAsync(this)
     }
 
     companion object {
@@ -88,13 +87,34 @@ class TravelFragment : Fragment(),OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        // issue : 불려야하는데 호출이 안됨
         toast("ready to use Google map")    // developerkim : to be deleted
         gMap = googleMap
         val sydney = LatLng(-34.0, 151.0)
         gMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         gMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
+
+    override fun onPause() {
+        super.onPause()
+        mapView.onPause()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView.onLowMemory()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapView.onResume()
+        // initialize
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        mapView.onSaveInstanceState(outState)
+    }
+
 
     private fun addTestArray() {
         testArray.add("부산")
@@ -109,7 +129,5 @@ class TravelFragment : Fragment(),OnMapReadyCallback {
         testArray.add("진주")
         testArray.add("전주")
         testArray.add("포항")
-
-
     }
 }
