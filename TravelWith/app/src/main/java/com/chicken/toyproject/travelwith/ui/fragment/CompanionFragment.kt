@@ -16,6 +16,9 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import kotlinx.android.synthetic.main.bottomsheet_companion.*
+import kotlinx.android.synthetic.main.bottomsheet_companion.view.*
 import kotlinx.android.synthetic.main.fragment_companion.*
 import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.toast
@@ -58,12 +61,20 @@ class TravelFragment : Fragment(),OnMapReadyCallback {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        /*addTestArray()  // to be deleted
-        rvCompanionList.layoutManager = LinearLayoutManager(activity)
-        rvCompanionList.adapter = CompanionAdapter(testArray, context)*/
         mapView.onCreate(savedInstanceState)
         mapView.onResume()
         mapView.getMapAsync(this)
+
+        addTestArray()
+
+        val view: View = layoutInflater.inflate(R.layout.bottomsheet_companion, null)
+        val rvCompanionList = view.rvCompanionList
+        rvCompanionList.layoutManager = LinearLayoutManager(activity)
+        rvCompanionList.adapter = CompanionAdapter(testArray, context)
+
+        val bottomSheetDialog = BottomSheetDialog(requireContext())
+        bottomSheetDialog.setContentView(view)
+        bottomSheetDialog.show()
     }
 
     companion object {

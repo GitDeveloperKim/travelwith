@@ -5,27 +5,6 @@
              android:layout_height="match_parent"
              tools:context=".ui.fragment.TravelFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <!--<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:src="@drawable/googlemap"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="search"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvCompanionList"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-    </LinearLayout>-->
     <com.google.android.gms.maps.MapView
             android:id="@+id/mapView"
             android:name="com.google.android.gms.maps.MapFragment"
